@@ -1,0 +1,135 @@
+/* ============================================================
+   1. BASE I VARIABLES
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap');
+
+:root {
+    --neon: #9ac3ba;   /* Verd Menta */
+    --bg: #fffefd;     /* Blanc Os */
+    --card: #e8794e;   /* Terracota */
+    --radius: 18px;
+    --text-fosco: #2d2d2d;
+    --text-clar: #ffffff;
+}
+
+* { 
+    margin: 0; padding: 0; box-sizing: border-box; 
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body { 
+    background-color: var(--bg); 
+    color: var(--text-fosco);
+    line-height: 1.4; 
+}
+
+/* ============================================================
+   2. NAVEGACIÓ I BOTONS
+   ============================================================ */
+nav { position: fixed; top: 0; width: 100%; padding: 20px; z-index: 1000; }
+
+.back-btn { 
+    background: var(--bg); color: var(--card); text-decoration: none; 
+    font-size: 0.8rem; font-weight: 900; padding: 12px 25px; 
+    border-radius: 50px; border: 2px solid var(--card); transition: 0.3s; 
+    display: inline-block;
+}
+.back-btn:hover { background: var(--card); color: var(--text-clar); }
+
+.btn-action {
+    width: 100%; padding: 22px; font-size: 1rem; font-weight: 900;
+    text-align: center; text-decoration: none; color: var(--text-clar);
+    background: var(--card); border: 2px solid var(--neon); 
+    border-radius: var(--radius); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-transform: uppercase; cursor: pointer; display: block;
+}
+.btn-action:hover { transform: scale(1.03) translateY(-3px); background: var(--neon); color: var(--text-fosco); }
+
+/* ============================================================
+   3. PÀGINES INTERNES I TARGETES
+   ============================================================ */
+.page-container { 
+    padding: 120px 20px 60px; 
+    min-height: 100vh; display: flex; flex-direction: column; align-items: center; 
+}
+
+.glass-card { 
+    background: var(--card); border-radius: var(--radius); padding: 30px; 
+    width: 100%; max-width: 550px; color: var(--text-clar);
+    box-shadow: 0 15px 35px rgba(232, 121, 78, 0.25);
+}
+
+.section-title { 
+    font-size: 2.2rem; font-weight: 900; color: var(--card); 
+    text-transform: uppercase; margin-bottom: 25px; text-align: center; 
+}
+.glass-card .section-title { color: var(--text-clar); }
+
+/* ============================================================
+   4. EL FORMULARI (RECUPERAT I NET)
+   ============================================================ */
+.modern-form { display: flex; flex-direction: column; gap: 12px; }
+
+.modern-form input, .modern-form textarea { 
+    width: 100%; padding: 16px; border-radius: 12px; border: none;
+    background: white; /* Recuperem el blanc net */
+    color: var(--text-fosco); /* Text fosc sobre fons blanc */
+    font-size: 16px; font-weight: 500;
+}
+
+.modern-form input::placeholder, .modern-form textarea::placeholder {
+    color: #999;
+}
+
+.modern-form input:focus, .modern-form textarea:focus {
+    outline: 2px solid var(--neon);
+}
+
+/* ============================================================
+   5. EL MAPA (AMPLIAT)
+   ============================================================ */
+.mapa-container-full {
+    width: 100%;
+    max-width: 900px; /* Ara el mapa és molt més ample */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mapa-wrapper { 
+    height: 500px; /* Més altura */
+    border-radius: var(--radius); 
+    overflow: hidden; 
+    border: 4px solid var(--card); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.mapa-info {
+    text-align: center;
+    font-weight: 700;
+    color: var(--card);
+}
+
+/* ============================================================
+   6. CONTACTE DIRECTE I SOCIALS
+   ============================================================ */
+.direct-buttons-grid, .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+.contact-pill, .social-pill { 
+    background: rgba(255,255,255,0.1); border: 2px solid var(--text-clar); 
+    color: var(--text-clar); text-decoration: none; font-weight: 900; 
+    padding: 15px; border-radius: 50px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s;
+}
+.contact-pill:hover, .social-pill:hover { background: var(--text-clar); color: var(--card); transform: translateY(-3px); }
+
+/* ============================================================
+   7. PORTADA I RESPONSIVE
+   ============================================================ */
+.body-portada { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+.logo-animat { width: 220px; animation: rodaLogo 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+@keyframes rodaLogo { 0% { transform: rotate(-180deg) scale(0.3); opacity: 0; } 100% { transform: rotate(0deg) scale(1); opacity: 1; } }
+
+@media (min-width: 768px) {
+    .btn-group-portada { display: flex; flex-direction: row; gap: 15px; }
+    .logo-animat { width: 320px; }
+}

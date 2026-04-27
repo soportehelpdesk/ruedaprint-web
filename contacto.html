@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contacto | Rueda Print</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="back-btn">← INICIO</a>
+    </nav>
+
+    <main class="page-container">
+        <div class="glass-card">
+            <h2 class="section-title">Contacto</h2>
+            
+            <form action="https://formspree.io/f/xaqakrbl" method="POST" class="modern-form">
+                <input type="hidden" name="_next" value="index.html">
+                <input type="text" name="name" placeholder="Tu nombre" required>
+                <input type="email" name="email" placeholder="Tu email" required>
+                <textarea name="message" rows="5" placeholder="¿En qué te ayudamos?" required></textarea>
+                
+                <button type="submit" class="btn-action">ENVIAR PETICIÓN</button>
+            </form>
+
+            <div class="direct-contact">    
+                <div class="direct-buttons-grid">
+                    <a href="mailto:info@ruedaprint.com" class="contact-pill">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                    
+                    <a href="https://wa.me/614393746" target="_blank" class="contact-pill">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
