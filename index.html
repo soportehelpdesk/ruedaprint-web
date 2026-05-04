@@ -8,15 +8,57 @@
 </head>
 <body class="body-portada">
 
-    <div class="logo-container">
-        <img src="logo.png" alt="Rueda Print Logo" class="logo-animat">
+    <!-- LOADER: MÀQUINA D'IMPRIMIR -->
+    <div id="loader" class="printer-loader">
+        <div class="printer-body">
+            <div class="printer-top"></div>
+            <div class="printer-slot"></div>
+            <div class="paper-tray">
+                <div class="printed-photo">
+                    <img src="logo.png" alt="Rueda Print" class="printing-paper">
+                </div>
+            </div>
+        </div>
+        <div class="loader-status">
+            <div class="status-light"></div>
+            <p class="printing-text">Imprimiendo experiencia...</p>
+        </div>
     </div>
 
-    <div class="btn-group-portada">
-        <a href="puntos.html" class="btn-action">PUNTOS RUEDA PRINT</a>
-        <a href="sobre.html" class="btn-action">REDES SOCIALES</a>
-        <a href="contacto.html" class="btn-action"> CONTACTO</a>
-    </div>
+    <!-- CONTINGUT PRINCIPAL -->
+    <main id="main-content" class="content-hidden">
+        <div class="hero-container">
+            <img src="logo.png" alt="Rueda Print Logo" class="logo-principal">
+        </div>
 
+        <div class="btn-group-portada">
+            <a href="puntos.html" class="btn-action">Puntos de impresión</a>
+            <a href="sobre.html" class="btn-action">Quiénes somos</a>
+            <a href="contacto.html" class="btn-action">Contacto</a>
+        </div>
+    </main>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('loader');
+            const content = document.getElementById('main-content');
+            
+            // Control de sessió per no repetir l'animació al tornar arrere
+            if (sessionStorage.getItem('rueda_print_intro')) {
+                loader.style.display = 'none';
+                content.classList.remove('content-hidden');
+                content.style.opacity = '1';
+                content.style.visibility = 'visible';
+            } else {
+                setTimeout(() => {
+                    loader.classList.add('fade-out');
+                    content.classList.remove('content-hidden');
+                    content.classList.add('fade-in');
+                    sessionStorage.setItem('rueda_print_intro', 'true');
+                    setTimeout(() => { loader.style.display = 'none'; }, 500);
+                }, 3000);
+            }
+        });
+    </script>
 </body>
 </html>
