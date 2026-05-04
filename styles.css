@@ -1,135 +1,108 @@
 /* ============================================================
-   1. BASE I VARIABLES
+   1. VARIABLES I BASE
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap');
 
 :root {
-    --neon: #9ac3ba;   /* Verd Menta */
-    --bg: #fffefd;     /* Blanc Os */
-    --card: #e8794e;   /* Terracota */
-    --radius: 18px;
-    --text-fosco: #2d2d2d;
-    --text-clar: #ffffff;
+    --neon: #9ac3ba;   --bg: #fffefd;     --card: #e8794e;   
+    --radius: 18px;    --text-fosco: #2d2d2d; --text-clar: #ffffff;
+    --insta: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 }
 
-* { 
-    margin: 0; padding: 0; box-sizing: border-box; 
-    font-family: 'Montserrat', sans-serif;
-    -webkit-tap-highlight-color: transparent;
-}
-
-body { 
-    background-color: var(--bg); 
-    color: var(--text-fosco);
-    line-height: 1.4; 
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+body { background-color: var(--bg); color: var(--text-fosco); overflow-x: hidden; }
 
 /* ============================================================
-   2. NAVEGACIÓ I BOTONS
+   2. LOADER (IMPRESORA CORREGIDA)
    ============================================================ */
-nav { position: fixed; top: 0; width: 100%; padding: 20px; z-index: 1000; }
-
-.back-btn { 
-    background: var(--bg); color: var(--card); text-decoration: none; 
-    font-size: 0.8rem; font-weight: 900; padding: 12px 25px; 
-    border-radius: 50px; border: 2px solid var(--card); transition: 0.3s; 
-    display: inline-block;
+.printer-loader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg); display: flex; flex-direction: column;
+    justify-content: center; align-items: center; z-index: 9999;
 }
-.back-btn:hover { background: var(--card); color: var(--text-clar); }
+.printer-body {
+    width: 260px; height: 90px; background: #e8e8e8; border-radius: 12px;
+    position: relative; box-shadow: inset 0 2px 4px white, 0 10px 25px rgba(0,0,0,0.1);
+}
+.printer-top {
+    width: 100%; height: 30px; background: #f2f2f2;
+    border-radius: 12px 12px 0 0; border-bottom: 2px solid #ccc;
+}
+.printer-slot {
+    width: 220px; height: 10px; background: #111; margin: 10px auto 0;
+    border-radius: 4px; position: relative; z-index: 10;
+}
+.paper-tray {
+    width: 200px; height: 200px; overflow: hidden; position: absolute;
+    top: 45px; left: 30px; z-index: 1; display: flex; justify-content: center;
+}
+.printed-photo {
+    width: 160px; background: white; padding: 8px; border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: absolute; top: -180px; 
+    display: flex; justify-content: center; align-items: center;
+    animation: printSteps 2.5s ease-in-out forwards;
+}
+.printing-paper { width: 100%; height: auto; object-fit: contain; }
 
+@keyframes printSteps {
+    0% { transform: translateY(0); opacity: 0; }
+    15% { opacity: 1; }
+    100% { transform: translateY(190px); opacity: 1; }
+}
+
+.loader-status { margin-top: 160px; display: flex; align-items: center; gap: 10px; }
+.status-light { width: 10px; height: 10px; background: #4caf50; border-radius: 50%; animation: blink 0.8s infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.printing-text { font-weight: 900; font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
+/* ============================================================
+   3. BOTONS (INSTA, TIKTOK I GENERAL)
+   ============================================================ */
 .btn-action {
-    width: 100%; padding: 22px; font-size: 1rem; font-weight: 900;
-    text-align: center; text-decoration: none; color: var(--text-clar);
-    background: var(--card); border: 2px solid var(--neon); 
-    border-radius: var(--radius); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    text-transform: uppercase; cursor: pointer; display: block;
+    display: block; width: 100%; padding: 20px; margin-bottom: 15px;
+    background: var(--card); color: var(--text-clar) !important;
+    border: 2px solid var(--neon); border-radius: var(--radius);
+    text-align: center; text-decoration: none; font-weight: 900;
+    text-transform: uppercase; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.btn-action:hover { transform: scale(1.03) translateY(-3px); background: var(--neon); color: var(--text-fosco); }
+.btn-action:hover { transform: scale(1.05) translateY(-5px); }
+
+.btn-insta { background: var(--insta) !important; border-color: #fff !important; }
+.btn-tiktok { 
+    background: #000 !important; border-color: #25f4ee !important; 
+    box-shadow: 3px 3px 0px #fe2c55, -3px -3px 0px #25f4ee; 
+}
+.btn-tiktok:hover { box-shadow: 5px 5px 0px #fe2c55, -5px -5px 0px #25f4ee; }
 
 /* ============================================================
-   3. PÀGINES INTERNES I TARGETES
+   4. ESTRUCTURA
    ============================================================ */
-.page-container { 
-    padding: 120px 20px 60px; 
-    min-height: 100vh; display: flex; flex-direction: column; align-items: center; 
-}
-
-.glass-card { 
-    background: var(--card); border-radius: var(--radius); padding: 30px; 
-    width: 100%; max-width: 550px; color: var(--text-clar);
-    box-shadow: 0 15px 35px rgba(232, 121, 78, 0.25);
-}
-
-.section-title { 
-    font-size: 2.2rem; font-weight: 900; color: var(--card); 
-    text-transform: uppercase; margin-bottom: 25px; text-align: center; 
-}
-.glass-card .section-title { color: var(--text-clar); }
-
-/* ============================================================
-   4. EL FORMULARI (RECUPERAT I NET)
-   ============================================================ */
-.modern-form { display: flex; flex-direction: column; gap: 12px; }
-
-.modern-form input, .modern-form textarea { 
-    width: 100%; padding: 16px; border-radius: 12px; border: none;
-    background: white; /* Recuperem el blanc net */
-    color: var(--text-fosco); /* Text fosc sobre fons blanc */
-    font-size: 16px; font-weight: 500;
-}
-
-.modern-form input::placeholder, .modern-form textarea::placeholder {
-    color: #999;
-}
-
-.modern-form input:focus, .modern-form textarea:focus {
-    outline: 2px solid var(--neon);
-}
-
-/* ============================================================
-   5. EL MAPA (AMPLIAT)
-   ============================================================ */
-.mapa-container-full {
-    width: 100%;
-    max-width: 900px; /* Ara el mapa és molt més ample */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.mapa-wrapper { 
-    height: 500px; /* Més altura */
-    border-radius: var(--radius); 
-    overflow: hidden; 
-    border: 4px solid var(--card); 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.mapa-info {
-    text-align: center;
-    font-weight: 700;
-    color: var(--card);
-}
-
-/* ============================================================
-   6. CONTACTE DIRECTE I SOCIALS
-   ============================================================ */
-.direct-buttons-grid, .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
-.contact-pill, .social-pill { 
-    background: rgba(255,255,255,0.1); border: 2px solid var(--text-clar); 
-    color: var(--text-clar); text-decoration: none; font-weight: 900; 
-    padding: 15px; border-radius: 50px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s;
-}
-.contact-pill:hover, .social-pill:hover { background: var(--text-clar); color: var(--card); transform: translateY(-3px); }
-
-/* ============================================================
-   7. PORTADA I RESPONSIVE
-   ============================================================ */
-.body-portada { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
-.logo-animat { width: 220px; animation: rodaLogo 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
-@keyframes rodaLogo { 0% { transform: rotate(-180deg) scale(0.3); opacity: 0; } 100% { transform: rotate(0deg) scale(1); opacity: 1; } }
+.body-portada { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+.hero-container { width: 100%; max-width: 450px; margin-bottom: 40px; text-align: center; }
+.logo-principal { width: 100%; height: auto; max-height: 35vh; object-fit: contain; }
+.btn-group-portada { width: 100%; max-width: 350px; }
 
 @media (min-width: 768px) {
-    .btn-group-portada { display: flex; flex-direction: row; gap: 15px; }
-    .logo-animat { width: 320px; }
+    .btn-group-portada { display: flex; flex-direction: row; gap: 15px; max-width: 900px; }
+    .btn-group-portada .btn-action { margin-bottom: 0; }
 }
+
+/* Pàgines Internes */
+.page-container { padding: 120px 20px 60px; display: flex; flex-direction: column; align-items: center; gap: 30px; }
+.glass-card { background: var(--card); border-radius: var(--radius); padding: 30px; width: 100%; max-width: 600px; color: var(--text-clar); }
+.section-title { font-size: 2rem; font-weight: 900; color: var(--card); text-transform: uppercase; text-align: center; margin-bottom: 20px; }
+
+/* Formularis i Mapa */
+.modern-form { display: flex; flex-direction: column; gap: 15px; }
+.modern-form input, .modern-form textarea { width: 100%; padding: 16px; border-radius: 12px; border: none; background: white; color: var(--text-fosco); font-weight: 700; }
+.mapa-wrapper { width: 100%; max-width: 900px; height: 450px; border-radius: var(--radius); border: 4px solid var(--card); overflow: hidden; }
+
+/* Navegació */
+nav { position: fixed; top: 0; width: 100%; padding: 20px; z-index: 1000; }
+.back-btn { background: var(--bg); color: var(--card); text-decoration: none; font-weight: 900; padding: 10px 20px; border-radius: 50px; border: 2px solid var(--card); }
+
+/* Control de transicions */
+.content-hidden { opacity: 0; visibility: hidden; }
+.fade-in { opacity: 1; visibility: visible; transition: 0.8s ease-out; }
+.fade-out { opacity: 0; transition: 0.5s; pointer-events: none; }
