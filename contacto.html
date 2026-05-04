@@ -14,7 +14,7 @@
 
     <main class="page-container">
         <div class="glass-card">
-            <h2 class="section-title">Contacto</h2>
+            <h2 class="section-title" style="color: var(--text-clar); text-align: left; margin-bottom: 20px;">CONTACTO</h2>
             
             <form action="https://formspree.io/f/xaqakrbl" method="POST" class="modern-form">
                 <input type="hidden" name="_next" value="index.html">
@@ -22,17 +22,25 @@
                 <input type="email" name="email" placeholder="Tu email" required>
                 <textarea name="message" rows="5" placeholder="¿En qué te ayudamos?" required></textarea>
                 
-                <button type="submit" class="btn-action">ENVIAR PETICIÓN</button>
+                <button type="submit" class="btn-action" style="width: 100%; cursor: pointer;">ENVIAR PETICIÓN</button>
             </form>
 
-            <div class="direct-contact">    
-                <div class="direct-buttons-grid">
-                    <a href="mailto:info@ruedaprint.com" class="contact-pill">
+            <div class="direct-contact" style="margin-top: 30px;">    
+                <div class="direct-buttons-grid" style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <a href="mailto:info@ruedaprint.com" class="btn-action" style="flex: 1; padding: 12px; font-size: 0.8rem;">
                         <i class="fas fa-envelope"></i> Email
                     </a>
-                    
-                    <a href="https://wa.me/614393746" target="_blank" class="contact-pill">
+                    <a href="https://wa.me/614393746" target="_blank" class="btn-action" style="flex: 1; padding: 12px; font-size: 0.8rem; background: #25D366 !important; border-color: #fff !important;">
                         <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+
+                <div class="social-grid-cool" style="display: flex; gap: 10px;">
+                    <a href="https://instagram.com/" target="_blank" class="btn-action btn-insta" style="flex: 1; padding: 12px; font-size: 0.8rem;">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://tiktok.com/" target="_blank" class="btn-action btn-tiktok" style="flex: 1; padding: 12px; font-size: 0.8rem;">
+                        <i class="fab fa-tiktok"></i> TikTok
                     </a>
                 </div>
             </div>
